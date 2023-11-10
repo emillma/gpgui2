@@ -1,0 +1,17 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "/opt/conda/lib/python3.10/site-packages/torch/include",
+                "/opt/conda/lib/python3.10/site-packages/torch/include/torch/csrc/api/include/",
+                "/opt/conda/include/python3.10"
+            ],
+            "defines": [],
+            "cStandard": "gnu17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-arm64"
+        }
+    ],
+    "version": 4
+}
