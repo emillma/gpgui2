@@ -13,6 +13,14 @@
             "justMyCode": true
         },
         {
+            "name": "Python: Server",
+            "type": "python",
+            "request": "launch",
+            "program": "server.py",
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
             "name": "Python: Train",
             "type": "python",
             "request": "launch",
