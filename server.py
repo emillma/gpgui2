@@ -1,9 +1,10 @@
 from flask import Flask
 from flask import Flask, send_from_directory
-from subprocess import run
+import subprocess
 from pathlib import Path
 import random
 from shlex import split
+import sys
 
 app = Flask(__name__)
 
@@ -25,14 +26,18 @@ def hello():
     return str(random.randint(0, 100))
 
 
+def run(cmd, cwd):
+    print(f"RUNNING: {cmd}")
+    if subprocess.run(split(cmd), cwd=cwd).returncode:
+        print("FAILED")
+        sys.exit(0)
+    print("DONE")
+
+
 def main():
-    if run(split("npm run build"), cwd="client").returncode:
-        return
+    run("npm run build", cwd="client")
     # split("npx tailwindcss -o public/build/bundle.css --minify"),
-    if run(
-        split("npx tailwindcss -o public/build/bundle.css"), cwd="client"
-    ).returncode:
-        return
+    # run("npx tailwindcss -o public/build/bundle.css", cwd="client")
 
     # global_css = Path("client/public/global.css")
     # bundle_css = Path("client/public/build/bundle.css")
