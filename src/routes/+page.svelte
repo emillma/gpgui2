@@ -1,3 +1,9 @@
+<script>
+    console.log("Hello worlda!");
+    console.log("Hello worldb!");
+    let d;
+</script>
+
 <h1 class="text-3xl font-bold underline">Hello world!</h1>
 
 <style lang="postcss">

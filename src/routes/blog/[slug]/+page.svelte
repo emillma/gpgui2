@@ -3,6 +3,7 @@
     export let data;
 
     let number = 0;
+
     let socket = null;
 
     import { onMount } from "svelte";

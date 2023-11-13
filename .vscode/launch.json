@@ -5,7 +5,8 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Launch server",
+            "name": "Launch Server",
+            "type": "node",
             "request": "launch",
             "runtimeArgs": [
                 "run-script",
@@ -15,18 +16,21 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "type": "node",
             "console": "integratedTerminal"
         },
         {
+            "name": "Launch Client",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:5173",
-            "name": "Launch Edge",
-            "webRoot": "${workspaceFolder}"
+            // "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}",
+            "skipFiles": [
+                "localhost**"
+            ]
+            // "disableNetworkCache": true,
         },
         {
-            "name": "Python: Socket",
+            "name": "Python: Socket Server",
             "type": "python",
             "request": "launch",
             "program": "server.py",
@@ -38,10 +42,11 @@
         {
             "name": "Stack",
             "configurations": [
-                "Launch server",
-                "Launch Edge",
-                "Python: Socket"
-            ]
+                "Launch Server",
+                "Launch Client",
+                "Python: Socket Server"
+            ],
+            "stopAll": true
         }
     ]
 }
