@@ -76,8 +76,8 @@ RUN apt install -y \
 RUN apt install -y node && npm install -g n && n stable
 
 WORKDIR /root
-RUN echo "export MODULAR_HOME=\"/root/.modular\"" >> .bashrc
-RUN echo "export PATH=\"/root/.modular/pkg/packages.modular.com_mojo/bin:$PATH\"" >> .bashrc
+# RUN echo "export MODULAR_HOME=\"/root/.modular\"" >> .bashrc
+# RUN echo "export PATH=\"/root/.modular/pkg/packages.modular.com_mojo/bin:$PATH\"" >> .bashrc
 RUN echo "export DISPLAY=host.docker.internal:0.0" >> .bashrc
 RUN echo "export LIBGL_ALWAYS_INDIRECT=1" >> .bashrc
 # WORKDIR /include

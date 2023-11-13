@@ -1,50 +1,17 @@
-from flask import Flask
-from flask import Flask, send_from_directory
-import subprocess
-from pathlib import Path
-import random
-from shlex import split
-import sys
-
-app = Flask(__name__)
+import asyncio
+from websockets.server import serve
+from websockets import WebSocketServerProtocol
 
 
-# Path for our main Svelte page
-@app.route("/")
-def base():
-    return send_from_directory("client/public", "index.html")
+async def echo(websocket: WebSocketServerProtocol, path: str):
+    for i in range(10000):
+        await websocket.send(f"{i}")
+        await asyncio.sleep(1)
 
 
-# Path for all the static files (compiled JS/CSS, etc.)
-@app.route("/<path:path>")
-def home(path):
-    return send_from_directory("client/public", path)
+async def main():
+    async with serve(echo, "localhost", 8888):
+        await asyncio.Future()  # run forever
 
 
-@app.route("/rand")
-def hello():
-    return str(random.randint(0, 100))
-
-
-def run(cmd, cwd):
-    print(f"RUNNING: {cmd}")
-    if subprocess.run(split(cmd), cwd=cwd).returncode:
-        print("FAILED")
-        sys.exit(0)
-    print("DONE")
-
-
-def main():
-    run("npm run build", cwd="client")
-    # split("npx tailwindcss -o public/build/bundle.css --minify"),
-    # run("npx tailwindcss -o public/build/bundle.css", cwd="client")
-
-    # global_css = Path("client/public/global.css")
-    # bundle_css = Path("client/public/build/bundle.css")
-    # cmd = "npx tailwindcc -i global.css -o build/bundle.css --watch"
-    # run(split(cmd), cwd="client/public", check=True)
-    app.run(debug=False, host="localhost", port=8080)
-
-
-if __name__ == "__main__":
-    main()
+asyncio.run(main())

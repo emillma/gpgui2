@@ -5,33 +5,42 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
-            "type": "python",
+            "name": "Launch server",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal",
-            "justMyCode": true
+            "runtimeArgs": [
+                "run-script",
+                "dev"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node",
+            "console": "integratedTerminal"
         },
         {
-            "name": "Python: Server",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "name": "Launch Edge",
+            "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Python: Socket",
             "type": "python",
             "request": "launch",
             "program": "server.py",
             "console": "integratedTerminal",
             "justMyCode": true
         },
+    ],
+    "compounds": [
         {
-            "name": "Python: Train",
-            "type": "python",
-            "request": "launch",
-            "program": "train.py",
-            "console": "integratedTerminal",
-            "justMyCode": false,
-            "args": [
-                "-s",
-                "data/db/playroom",
-                // "--sh_degree",
-                // "0"
+            "name": "Stack",
+            "configurations": [
+                "Launch server",
+                "Launch Edge",
+                "Python: Socket"
             ]
         }
     ]
