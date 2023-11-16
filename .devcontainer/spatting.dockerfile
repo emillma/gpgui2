@@ -28,58 +28,61 @@ ENV DEBIAN_FRONTEND=noninteractive
 # RUN conda env create --file environment.yml && conda init bash && exec bash && conda activate gaussian_splatting
 
 WORKDIR /include
-RUN apt update
-RUN apt install -y \
-    build-essential \
-    cmake \
-    freeglut3-dev \
-    git \
-    curl \
-    wget \
-    libao-dev \
-    libassimp-dev \
-    libavcodec-dev \
-    libavdevice-dev \
-    libboost-all-dev \
-    libboost-filesystem-dev \
-    libboost-graph-dev \
-    libboost-program-options-dev \
-    libboost-system-dev \
-    libceres-dev \
-    libcgal-dev \
-    libeigen3-dev \
-    libembree-dev \
-    libflann-dev \
-    libfreeimage-dev \
-    libglew-dev \
-    libglfw3-dev \
-    libglm-dev \
-    libglu1-mesa-dev \
-    libgoogle-glog-dev \
-    libgtest-dev \
-    libgtk-3-dev \
-    libmetis-dev \
-    libmpg123-dev \
-    libopencv-dev \
-    libqt5opengl5-dev \
-    libsqlite3-dev \
-    libxxf86vm-dev \
-    mesa-common-dev \
-    iproute2 \
-    mesa-utils \
-    ninja-build \
-    pkg-config \
-    python3-dev \
-    qtbase5-dev \
-    tzdata
+RUN apt clean && apt update
+RUN apt install -y build-essential 
+RUN apt install -y cmake 
+RUN apt install -y freeglut3-dev 
+RUN apt install -y git 
+RUN apt install -y curl 
+RUN apt install -y wget 
+RUN apt install -y libao-dev 
+RUN apt install -y libassimp-dev 
+RUN apt install -y libavcodec-dev 
+RUN apt install -y libavdevice-dev 
+RUN apt install -y libboost-all-dev 
+RUN apt install -y libboost-filesystem-dev 
+RUN apt install -y libboost-graph-dev 
+RUN apt install -y libboost-program-options-dev 
+RUN apt install -y libboost-system-dev 
+RUN apt install -y libceres-dev 
+RUN apt install -y libcgal-dev 
+RUN apt install -y libeigen3-dev 
+RUN apt install -y libembree-dev 
+RUN apt install -y libflann-dev 
+RUN apt install -y libfreeimage-dev 
+RUN apt install -y libglew-dev 
+RUN apt install -y libglfw3-dev 
+RUN apt install -y libglm-dev 
+RUN apt install -y libglu1-mesa-dev 
+RUN apt install -y libgoogle-glog-dev 
+RUN apt install -y libgtest-dev 
+RUN apt install -y libgtk-3-dev 
+RUN apt install -y libmetis-dev 
+RUN apt install -y libmpg123-dev 
+RUN apt install -y libopencv-dev 
+RUN apt install -y libqt5opengl5-dev 
+RUN apt install -y libsqlite3-dev 
+RUN apt install -y libxxf86vm-dev 
+RUN apt install -y mesa-common-dev 
+RUN apt install -y iproute2 
+RUN apt install -y mesa-utils 
+RUN apt install -y ninja-build 
+RUN apt install -y pkg-config
+RUN apt install -y python3-dev 
+RUN apt install -y qtbase5-dev 
+RUN apt install -y tzdata
 
-RUN apt install -y node && npm install -g n && n stable
+
+RUN apt install -y nodejs 
+RUN apt install -y npm
+RUN npm install -g n && n stable
 
 WORKDIR /root
-# RUN echo "export MODULAR_HOME=\"/root/.modular\"" >> .bashrc
-# RUN echo "export PATH=\"/root/.modular/pkg/packages.modular.com_mojo/bin:$PATH\"" >> .bashrc
 RUN echo "export DISPLAY=host.docker.internal:0.0" >> .bashrc
 RUN echo "export LIBGL_ALWAYS_INDIRECT=1" >> .bashrc
+# RUN echo "export MODULAR_HOME=\"/root/.modular\"" >> .bashrc
+# RUN echo "export PATH=\"/root/.modular/pkg/packages.modular.com_mojo/bin:$PATH\"" >> .bashrc
+
 # WORKDIR /include
 # RUN git clone https://github.com/colmap/colmap
 # WORKDIR /include/colmap/build

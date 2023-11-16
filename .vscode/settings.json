@@ -1,14 +1,10 @@
 {
     "explorerExclude.backup": {},
     "files.exclude": {
-        "**/.git": false,
-        "**/.svn": false,
-        "**/.hg": false,
-        "**/CVS": false,
-        "**/.DS_Store": false,
-        "**/Thumbs.db": false,
-        "**/__pycache__": false,
-        "**/.pytest_cache": false,
+        "**/.git": true,
+        ".svelte-kit": false,
+        "package*.json": false,
+        "**/__pycache__": true,
         "client/*{js,json}": false
     },
 }

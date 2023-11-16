@@ -1,38 +1,23 @@
-# create-svelte
+# Svelte UX
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+![](https://img.shields.io/github/license/techniq/svelte-ux?style=flat)
+[![](https://img.shields.io/github/actions/workflow/status/techniq/svelte-ux/ci.yml?style=flat)](https://github.com/techniq/svelte-ux/actions/workflows/ci.yml)
+[![](https://img.shields.io/npm/v/svelte-ux?style=flat)](https://www.npmjs.com/package/svelte-ux)
+![npm](https://img.shields.io/npm/dw/svelte-ux?style=flat&color=orange)
 
-## Creating a project
+![](https://img.shields.io/github/license/svelte-ux?style=flat)
+[![](https://dcbadge.vercel.app/api/server/697JhMPD3t?style=flat)](https://discord.gg/697JhMPD3t)
 
-If you're seeing this, you've probably already done this step. Congrats!
+The projects aims to simplify building highly interactive and visual applications. It provides over 200 components, actions, stores, and utils, with many more planned.
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+The components are built using Tailwind with extensibility and customization in mind through the use of theming, variants, granule class overrides, and slots. A rich design token system is also currently in the works.
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+See also [LayerChart](https://layerchart.com) for a large collection of composable chart components to build a wide range of visualizations.
 
-## Developing
+## Publishing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```bash
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+- `npm run changeset` for each changelog worthy change
+- `npm run version` to bump `package.json` version based on changesets, materialize changesets into CHANGELOG.md
+- Commit as `Version bump to x.y.z` (TODO: automate)
+- `npm run publish` to publish version to npm
+- `git push --tags` to publish tags to Github

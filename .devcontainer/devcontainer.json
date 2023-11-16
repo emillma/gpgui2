@@ -1,6 +1,6 @@
 {
     // "image": "devcontainer:latest",
-    "image": "gaussiansplatting:latest",
+    "image": "torchtest:latest",
     // "forwardPorts": [
     //     3000,
     //     8050
@@ -8,23 +8,25 @@
     "customizations": {
         "vscode": {
             "extensions": [
+                "bradlc.vscode-tailwindcss",
+                "editorconfig.editorconfig",
+                "github.copilot",
+                "janisdd.vscode-edit-csv",
+                "kevinrose.vsc-python-indent",
+                "mhutchie.git-graph",
+                "modular-mojotools.vscode-mojo",
                 "ms-azuretools.vscode-docker",
-                "ms-vscode.cpptools",
-                "ms-vscode.cpptools-extension-pack",
                 "ms-python.python",
                 "ms-python.vscode-pylance",
                 "ms-vscode-remote.remote-ssh",
-                "kevinrose.vsc-python-indent",
-                "editorconfig.editorconfig",
+                "ms-vscode.cpptools-extension-pack",
+                "ms-vscode.cpptools",
                 "nvidia.nsight-vscode-edition",
-                "mhutchie.git-graph",
-                "znck.grammarly",
-                // "james-yu.latex-workshop",
-                "github.copilot",
-                "janisdd.vscode-edit-csv",
-                "modular-mojotools.vscode-mojo",
+                "svelte.svelte-vscode",
                 "visualstudioexptteam.vscodeintellicode",
-                "bradlc.vscode-tailwindcss"
+                "znck.grammarly",
+                "donjayamanne.githistory"
+                // "james-yu.latex-workshop",
             ]
         }
     },
