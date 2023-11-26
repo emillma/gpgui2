@@ -1,17 +1,26 @@
 <script lang="ts">
     import type { PageData } from "./$types";
+    import { onDestroy, onMount } from "svelte";
     export let data: PageData;
 
     let number = 0;
 
-    let socket = null;
+    let socket: WebSocket | null = null;
 
-    import { onMount } from "svelte";
     onMount(() => {
-        socket = new WebSocket("ws://localhost:8888/number");
+        socket = new WebSocket(`ws://${location.host}/ws`);
         socket.onmessage = (event) => {
             number = event.data;
         };
+        socket.onclose = () => {
+            socket = null;
+        };
+    });
+
+    onDestroy(() => {
+        if (socket) {
+            socket.close();
+        }
     });
 </script>
 

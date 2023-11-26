@@ -1,10 +1,9 @@
 {
     "explorerExclude.backup": {},
     "files.exclude": {
-        "**/.git": true,
-        ".svelte-kit": false,
-        "package*.json": false,
-        "**/__pycache__": true,
+        ".svelte-kit": true,
+        "package*.json": true,
+        "node_modules/": true,
         "client/*{js,json}": false
     },
     "workbench.colorCustomizations": {

@@ -1,18 +1,18 @@
 <script lang="ts">
-  import { mdiArrowRight } from '@mdi/js';
+  import { mdiArrowRight } from "@mdi/js";
 
-  import Breadcrumb from '$lib/components/Breadcrumb.svelte';
-  import Button from '$lib/components/Button.svelte';
-  import DividerDot from '$lib/components/DividerDot.svelte';
-  import Icon from '$lib/components/Icon.svelte';
-  import Preview from '$lib/components/Preview.svelte';
+  import Breadcrumb from "$lib/components/Breadcrumb.svelte";
+  import Button from "$lib/components/Button.svelte";
+  import DividerDot from "$lib/components/DividerDot.svelte";
+  import Icon from "$lib/components/Icon.svelte";
+  import Preview from "$lib/components/Preview.svelte";
 
-  let items = ['First', 'Second', 'Third'];
+  let items = ["First", "Second", "Third"];
 
   let labeledItems = [
-    { label: 'First', value: 'One' },
-    { label: 'Second', value: 'Two' },
-    { label: 'Third', value: 'Three' },
+    { label: "First", value: "One" },
+    { label: "Second", value: "Two" },
+    { label: "Third", value: "Three" },
   ];
 </script>
 
@@ -91,13 +91,17 @@
 <h2>Many items</h2>
 
 <Preview>
-  <Breadcrumb items={Array.from({ length: 20 }).map((_, i) => 'Item ' + ++i)} />
+  <Breadcrumb items={Array.from({ length: 20 }).map((_, i) => "Item " + ++i)} />
 </Preview>
 
 <h2>Null items (not displayed)</h2>
 
 <Preview>
-  <Breadcrumb items={Array.from({ length: 10 }).map((_, i) => (i % 2 ? null : 'Item ' + ++i))} />
+  <Breadcrumb
+    items={Array.from({ length: 10 }).map((_, i) =>
+      i % 2 ? null : "Item " + ++i,
+    )}
+  />
 </Preview>
 
 <h2>Color</h2>
@@ -122,8 +126,12 @@
 
 <Preview>
   <div class="w-[300px] border">
-    <Breadcrumb items={['Example', 'of', 'really really really long text']} class="flex-nowrap">
-      <span slot="item" class="last:truncate" let:item title={item}>{item}</span>
+    <Breadcrumb
+      items={["Example", "of", "really really really long text"]}
+      class="flex-nowrap"
+    >
+      <span slot="item" class="last:truncate" let:item title={item}>{item}</span
+      >
     </Breadcrumb>
   </div>
 </Preview>

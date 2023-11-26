@@ -4,7 +4,7 @@
     let total = 0;
 
     async function add() {
-        const response = await fetch("/api/add", {
+        const response = await fetch("/add", {
             method: "POST",
             body: JSON.stringify({ a, b }),
             headers: {
