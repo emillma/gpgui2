@@ -22,11 +22,12 @@
             "name": "Launch Client",
             "type": "chrome",
             "request": "launch",
-            // "url": "http://localhost:5173",
+            "url": "http://localhost:5173/",
             "webRoot": "${workspaceFolder}",
-            "skipFiles": [
-                "localhost**"
-            ]
+            "preLaunchTask": "sleep"
+            // "skipFiles": [
+            //     "localhost**"
+            // ]
             // "disableNetworkCache": true,
         },
         {
@@ -44,7 +45,7 @@
             "configurations": [
                 "Launch Server",
                 "Launch Client",
-                "Python: Socket Server"
+                // "Python: Socket Server"
             ],
             "stopAll": true
         }

@@ -1,0 +1,17 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "sleep",
+            "type": "shell",
+            "command": "sleep 3s",
+        },
+        {
+            "label": "curl 5173",
+            "type": "shell",
+            "command": "curl --retry 10 --retry-connrefused --retry-delay 1 http://localhost:5173/",
+        }
+    ]
+}
