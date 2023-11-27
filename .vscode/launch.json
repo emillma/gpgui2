@@ -26,9 +26,11 @@
             "webRoot": "${workspaceFolder}",
             "preLaunchTask": "sleep",
             "smartStep": true,
-            // "skipFiles": [
-            //     "localhost**"
-            // ]
+            "skipFiles": [
+                // "<node_internals>/**",
+                "**/localhost*/**",
+                "**/node_modules/**"
+            ],
             // "disableNetworkCache": true,
         },
         {
