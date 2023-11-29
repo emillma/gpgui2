@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onDestroy, onMount } from "svelte";
-
-    let soc: WebSocket;
+    import ReconnectingWebSocket from "reconnecting-websocket";
+    let ws: ReconnectingWebSocket;
     let jpeg_data: string | null = null;
     let data: string | null = null;
 
@@ -11,22 +11,29 @@
         const imageUrl = URL.createObjectURL(jpegblob);
         jpeg_data = imageUrl;
     }
-    function connect() {
-        soc = new WebSocket(`ws://${location.hostname}:5170/ws`);
-        soc.onmessage = onmessage;
-        const timer = setTimeout(() => soc.close(), 2000);
-        soc.onopen = (event) => clearTimeout(timer);
-        soc.onclose = (event) => setTimeout(connect, 1000);
-        soc.onerror = (event) => soc.close();
-    }
-    onMount(connect);
+
+    onMount(() => {
+        ws = new ReconnectingWebSocket(
+            `ws://${location.hostname}:5170/ws`,
+            [],
+            {
+                maxReconnectionDelay: 1000,
+                minReconnectionDelay: 500,
+                reconnectionDelayGrowFactor: 1,
+                connectionTimeout: 500,
+                maxRetries: Infinity,
+                debug: false,
+            },
+        );
+        ws.onmessage = onmessage;
+    });
 
     onDestroy(() => {
-        if (soc) {
-            soc.close();
+        if (ws) {
+            ws.close();
         }
     });
 </script>
 
 <img src={jpeg_data} alt="image" aria-hidden="true" />
-{@debug soc}
+{@debug ws}
