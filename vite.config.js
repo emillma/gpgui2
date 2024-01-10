@@ -7,4 +7,11 @@ export default defineConfig({
   test: {
     include: ['src/**/*.{test,spec}.{js,ts}'],
   },
+  server: {
+    port: 12101,
+    strictPort: true,
+  },
+  // define: {
+  //   global: {}, //https://github.com/vitejs/vite/discussions/5912
+  // }
 });

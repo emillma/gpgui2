@@ -10,7 +10,7 @@
             "request": "launch",
             "runtimeArgs": [
                 "run-script",
-                "dev"
+                "dev",
             ],
             "runtimeExecutable": "npm",
             "skipFiles": [
@@ -22,7 +22,7 @@
             "name": "Launch Client",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:5173/render",
+            "url": "http://localhost:12101/plots",
             "webRoot": "${workspaceFolder}",
             "preLaunchTask": "sleep",
             "smartStep": true,
@@ -37,7 +37,7 @@
             "name": "Python: Socket Server",
             "type": "python",
             "request": "launch",
-            "program": "server.py",
+            "program": "pystuff/server.py",
             "console": "integratedTerminal",
             "justMyCode": true
         },
