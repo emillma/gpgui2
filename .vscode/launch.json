@@ -17,13 +17,14 @@
                 "<node_internals>/**"
             ],
             "console": "integratedTerminal",
+            "cwd": "${workspaceFolder}/srig",
         },
         {
             "name": "Launch Client",
             "type": "chrome",
             "request": "launch",
-            "url": "http://localhost:12101/plots",
-            "webRoot": "${workspaceFolder}",
+            "url": "http://localhost:12101/",
+            "webRoot": "${workspaceFolder}/srig",
             "preLaunchTask": "sleep",
             "smartStep": true,
             "skipFiles": [
@@ -31,7 +32,7 @@
                 "**/localhost*/**",
                 "**/node_modules/**"
             ],
-            // "disableNetworkCache": true,
+            "disableNetworkCache": true,
         },
         {
             "name": "Python: Socket Server",

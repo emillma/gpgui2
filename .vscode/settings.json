@@ -2,9 +2,11 @@
     "explorerExclude.backup": {},
     "files.exclude": {
         ".svelte-kit": true,
-        "package*.json": true,
+        // "package*.json": true,
         "node_modules/": true,
-        "client/*{js,json}": false
+        "client/*{js,json}": false,
+        "**/node_modules": true,
+        "**/.svelte-kit": true
     },
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#ab307e",
