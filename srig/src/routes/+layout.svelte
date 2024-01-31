@@ -37,23 +37,18 @@
 	<svelte:fragment slot="header">
 		<!-- App Bar -->
 		<TabGroup
-			justify="justify-center"
 			active="variant-filled-secondary"
 			flex="flex-grow"
 			padding="py-4"
 		>
 			<TabAnchor href="/" selected={$page.url.pathname === "/"}>
-				<!-- <svelte:fragment slot="lead">(icon)</svelte:fragment> -->
-				<span>Home</span>
+				Home
 			</TabAnchor>
 
 			<TabAnchor href="/hello" selected={$page.url.pathname === "/hello"}>
-				<!-- <svelte:fragment slot="lead">(icon)</svelte:fragment> -->
-				<span>Hello</span>
+				Hello
 			</TabAnchor>
-			<!-- ... -->
 		</TabGroup>
 	</svelte:fragment>
-	<!-- Page Route Content -->
 	<slot />
 </AppShell>
