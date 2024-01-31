@@ -1,3 +1,5 @@
 **/node_modules/
 testproject/
 .svelte-kit/
+**/__pycache__/
+```
