@@ -29,7 +29,14 @@
 	import { storePopup } from "@skeletonlabs/skeleton";
 	storePopup.set({ computePosition, autoUpdate, flip, shift, offset, arrow });
 
+	// Emil's stuff
 	import { page } from "$app/stores";
+
+	const pages = [
+		{ name: "Home", path: "/" },
+		{ name: "Hello", path: "/hello" },
+		{ name: "Ptp", path: "/terminal/ptp" },
+	];
 </script>
 
 <!-- App Shell -->
@@ -39,16 +46,18 @@
 		<TabGroup
 			active="variant-filled-secondary"
 			flex="flex-grow"
-			padding="py-4"
+			padding="py-2"
 		>
-			<TabAnchor href="/" selected={$page.url.pathname === "/"}>
-				Home
-			</TabAnchor>
-
-			<TabAnchor href="/hello" selected={$page.url.pathname === "/hello"}>
-				Hello
-			</TabAnchor>
+			{#each pages as p}
+				<TabAnchor
+					href={p.path}
+					selected={$page.url.pathname === p.path}
+				>
+					{p.path}
+				</TabAnchor>
+			{/each}
 		</TabGroup>
 	</svelte:fragment>
+
 	<slot />
 </AppShell>

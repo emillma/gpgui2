@@ -1,17 +1,21 @@
 <script lang="ts">
     import ReconnectingWebSocket from "reconnecting-websocket";
     import { onDestroy, onMount } from "svelte";
+    import { page } from "$app/stores";
 
     export let onmessage: (event: MessageEvent) => Promise<void>;
 
-    export let url: string;
+    export let path_name: string;
 
     let ws: ReconnectingWebSocket;
 
     onMount(() => {
-        console.log("Connecting to", url);
+        let url = new URL($page.url.toString());
+        url.protocol = "ws:";
+        url.port = "12102";
+        url.pathname = path_name;
 
-        ws = new ReconnectingWebSocket(url, [], {
+        ws = new ReconnectingWebSocket(url.toString(), [], {
             maxReconnectionDelay: 1000,
             minReconnectionDelay: 500,
             reconnectionDelayGrowFactor: 1,
