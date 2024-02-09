@@ -37,6 +37,7 @@
 		{ name: "Home", path: "/" },
 		{ name: "Hello", path: "/hello" },
 		{ name: "Ptp", path: "/terminal/ptp" },
+		{ name: "Video", path: "/livestream" },
 	];
 </script>
 

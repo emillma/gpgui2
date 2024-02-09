@@ -2,7 +2,7 @@ import asyncio
 from asyncio.subprocess import PIPE, create_subprocess_shell, Process
 from websockets import serve, WebSocketServerProtocol
 import json
-
+from pathlib import Path
 
 scripts: dict[str, Process] = dict()
 
@@ -26,7 +26,17 @@ async def run_cmd(cmd: str, socket: WebSocketServerProtocol):
 
 
 async def handle(sock: WebSocketServerProtocol, path):
-    if path == "/run_ls":
+
+    if path == "/video":
+        while True:
+            data = Path("/workspaces/gui/pyserver/jpeg420exif.jpg").read_bytes()
+            await sock.send(data)
+            await asyncio.sleep(0.2)
+            data = Path("/workspaces/gui/pyserver/jpeg444.jpg").read_bytes()
+            await sock.send(data)
+            await asyncio.sleep(0.2)
+
+    if path == "run_ls":
         await run_cmd("ls", sock)
 
 
