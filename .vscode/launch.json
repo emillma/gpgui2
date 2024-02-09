@@ -28,7 +28,7 @@
             "preLaunchTask": "sleep",
             "smartStep": true,
             "skipFiles": [
-                // "<node_internals>/**",
+                "<node_internals>/**",
                 "localhost:12101/**",
                 "**/node_modules/**"
             ],

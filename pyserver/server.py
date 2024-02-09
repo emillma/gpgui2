@@ -4,10 +4,16 @@ from urllib import parse
 
 
 async def hello(websocket: WebSocketServerProtocol, path):
+    data = ""
+    for i in range(10):
+        data += f"Hello, World {i}!\n"
     try:
         print(websocket, path)
         while True:
-            await websocket.send("Hello, world!")
+            data += f"Hello, World {i}!\n"
+            await websocket.send(data)
+            i += 1
+
             await asyncio.sleep(1)
     except Exception as e:
         print(e)
