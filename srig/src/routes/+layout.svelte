@@ -31,6 +31,7 @@
 
 	// Emil's stuff
 	import { page } from "$app/stores";
+	import { setContext } from "svelte";
 
 	const pages = [
 		{ name: "Home", path: "/" },
@@ -39,25 +40,16 @@
 	];
 </script>
 
-<!-- App Shell -->
-<AppShell>
-	<svelte:fragment slot="header">
-		<!-- App Bar -->
-		<TabGroup
-			active="variant-filled-secondary"
-			flex="flex-grow"
-			padding="py-2"
-		>
-			{#each pages as p}
-				<TabAnchor
-					href={p.path}
-					selected={$page.url.pathname === p.path}
-				>
-					{p.path}
-				</TabAnchor>
-			{/each}
-		</TabGroup>
-	</svelte:fragment>
-
-	<slot />
-</AppShell>
+<TabGroup
+	class="h-10 top-0"
+	active="variant-filled-secondary"
+	flex="flex-1"
+	padding="py-2"
+>
+	{#each pages as p}
+		<TabAnchor href={p.path} selected={$page.url.pathname === p.path}>
+			{p.name}
+		</TabAnchor>
+	{/each}
+</TabGroup>
+<slot />
