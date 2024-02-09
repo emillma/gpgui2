@@ -5,14 +5,15 @@
 
     export let onmessage: (event: MessageEvent) => Promise<void>;
 
-    export let path_name: string;
+    export let path_name: string = "/";
+    export let port: string = "12102";
 
     let ws: ReconnectingWebSocket;
 
     onMount(() => {
         let url = new URL($page.url.toString());
         url.protocol = "ws:";
-        url.port = "12102";
+        url.port = port;
         url.pathname = path_name;
 
         ws = new ReconnectingWebSocket(url.toString(), [], {

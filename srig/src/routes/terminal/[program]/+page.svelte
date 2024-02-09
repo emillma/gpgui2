@@ -8,17 +8,19 @@
     let text: string = "";
     let term: HTMLElement;
     let scroll_pos: number;
-
+    let auto_scroll = true;
+    let running = false;
     // user.set(Footer);
 
     async function onmessage(event: MessageEvent) {
-        text = event.data;
+        text = text + event.data;
     }
 
     afterUpdate(() => {
-        const bottom = term.scrollTop + term.clientHeight;
-        if (bottom > term.scrollHeight - 100)
+        // const bottom = term.scrollTop + term.clientHeight;
+        if (auto_scroll) {
             term.scroll({ top: term.scrollHeight, behavior: "smooth" });
+        }
     });
 </script>
 
@@ -26,7 +28,8 @@
     <title>Mypage</title>
 </svelte:head>
 
-<Connection {onmessage} path_name={"cat"} />
+<Connection {onmessage} path_name={"run_ls"} />
+
 <div class="page">
     <div
         bind:this={term}
@@ -40,12 +43,17 @@
         {/if}
     </div>
 
-    <div class="flex p-4 justify-center">
+    <div class="flex p-4 justify-around justify-items-center">
         <SlideToggle
-            name="slider"
+            bind:checked={running}
+            name="auto_scroll"
             active="bg-green-500"
-            size="md"
             disabled={true}
+        />
+        <SlideToggle
+            bind:checked={auto_scroll}
+            name="auto_scroll"
+            active="bg-green-500"
         />
     </div>
 </div>
