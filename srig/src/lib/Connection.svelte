@@ -10,6 +10,10 @@
 
     let ws: ReconnectingWebSocket;
 
+    export async function send(data: string) {
+        ws.send(data);
+    }
+
     onMount(() => {
         let url = new URL($page.url.toString());
         url.protocol = "ws:";

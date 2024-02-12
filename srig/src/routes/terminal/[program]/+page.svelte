@@ -1,57 +1,45 @@
 <script lang="ts">
     import type { PageData } from "./$types";
     import Connection from "$lib/Connection.svelte";
+    import Terminal from "$lib/Terminal.svelte";
     import { SlideToggle } from "@skeletonlabs/skeleton";
-    import { afterUpdate, tick } from "svelte";
 
     export let data: PageData;
     let text: string = "";
-    let term: HTMLElement;
-    let scroll_pos: number;
-    let auto_scroll = true;
-    let running = false;
-    // user.set(Footer);
+    let checked = false;
+    let disabled = true;
+    let connection: Connection;
+    let update_status = true;
 
     async function onmessage(event: MessageEvent) {
-        text = text + event.data;
+        const msg = JSON.parse(event.data);
+        if (msg.type === "message") text += msg.data;
+        else if (msg.type === "status" && update_status) {
+            checked = msg.data === "True";
+            disabled = false;
+        }
     }
 
-    afterUpdate(() => {
-        // const bottom = term.scrollTop + term.clientHeight;
-        if (auto_scroll) {
-            term.scroll({ top: term.scrollHeight, behavior: "smooth" });
-        }
-    });
+    async function toggle_change(event: Event) {
+        if (checked) connection.send("start");
+        else connection.send("stop");
+        disabled = true;
+        update_status = false;
+        setTimeout(() => {
+            update_status = true;
+        }, 1000);
+    }
 </script>
 
-<svelte:head>
-    <title>Mypage</title>
-</svelte:head>
-
-<Connection {onmessage} path_name={"run_ls"} />
+<Connection bind:this={connection} {onmessage} path_name={"run_ls"} />
 
 <div class="page">
-    <div
-        bind:this={term}
-        on:scroll={() => {
-            console.log(term.scrollTop);
-        }}
-        class="overflow-scroll grow text-sm border-surface-800"
-    >
-        {#if text}
-            <pre class="pre">{text}</pre>
-        {/if}
-    </div>
-
+    <Terminal bind:text />
     <div class="flex p-4 justify-around justify-items-center">
         <SlideToggle
-            bind:checked={running}
-            name="auto_scroll"
-            active="bg-green-500"
-            disabled={true}
-        />
-        <SlideToggle
-            bind:checked={auto_scroll}
+            bind:checked
+            bind:disabled
+            on:change={toggle_change}
             name="auto_scroll"
             active="bg-green-500"
         />
