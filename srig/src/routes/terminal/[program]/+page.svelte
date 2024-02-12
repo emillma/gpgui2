@@ -11,7 +11,7 @@
     let connection: Connection;
     let update_status = true;
 
-    async function onmessage(event: MessageEvent) {
+    async function message_cb(event: MessageEvent) {
         const msg = JSON.parse(event.data);
         if (msg.type === "message") text += msg.data;
         else if (msg.type === "status" && update_status) {
@@ -31,7 +31,7 @@
     }
 </script>
 
-<Connection bind:this={connection} {onmessage} path_name={"run_ls"} />
+<Connection bind:this={connection} {message_cb} path_name={"run_ls"} />
 
 <div class="page">
     <Terminal bind:text />

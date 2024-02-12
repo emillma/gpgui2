@@ -26,6 +26,7 @@ class Terminal:
         async def read_task():
             async for message in self.proc.stdout:
                 self.messages.append(message)
+                self.messages = self.messages[-100:]
                 self.message_event.set()
 
         self.reader_task = asyncio.create_task(read_task())

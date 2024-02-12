@@ -4,7 +4,7 @@
     let jpeg_data: string;
     // user.set(Footer);
 
-    async function onmessage(event: MessageEvent) {
+    async function message_cb(event: MessageEvent) {
         const blob: Blob = event.data;
         const jpegblob = new Blob([blob], { type: "image/jpeg" });
         const imageUrl = URL.createObjectURL(jpegblob);
@@ -12,6 +12,6 @@
     }
 </script>
 
-<Connection {onmessage} path_name={"video"} />
+<Connection {message_cb} path_name={"video"} />
 
 <img class="w-1/2" src={jpeg_data} alt="image" aria-hidden="true" />

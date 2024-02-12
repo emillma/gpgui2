@@ -3,7 +3,7 @@
     import { onDestroy, onMount } from "svelte";
     import { page } from "$app/stores";
 
-    export let onmessage: (event: MessageEvent) => Promise<void>;
+    export let message_cb: (event: MessageEvent) => Promise<void>;
 
     export let path_name: string = "/";
     export let port: string = "12102";
@@ -28,7 +28,7 @@
             maxRetries: Infinity,
             debug: false,
         });
-        ws.onmessage = onmessage;
+        ws.onmessage = message_cb;
     });
 
     onDestroy(() => {
