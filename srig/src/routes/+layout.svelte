@@ -35,8 +35,8 @@
 
 	const pages = [
 		{ name: "Home", path: "/" },
-		{ name: "Hello", path: "/hello" },
-		{ name: "Ptp", path: "/terminal/ptp" },
+		// { name: "ls", path: "/hello" },
+		{ name: "Ptp", path: "/ptp" },
 		{ name: "Video", path: "/livestream" },
 	];
 </script>

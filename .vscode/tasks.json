@@ -6,12 +6,7 @@
         {
             "label": "sleep",
             "type": "shell",
-            "command": "sleep 3s",
+            "command": "sleep 2s",
         },
-        {
-            "label": "curl 5173",
-            "type": "shell",
-            "command": "curl --retry 10 --retry-connrefused --retry-delay 1 http://localhost:5173/",
-        }
     ]
 }

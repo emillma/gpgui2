@@ -11,7 +11,7 @@ export default defineConfig({
 	}),
 	],
 	server: {
-		port: 12101,
+		port: 62201,
 		strictPort: true,
 	},
 });

@@ -1,6 +1,4 @@
 <script lang="ts">
-    import Terminal from "$lib/Terminal.svelte";
-    import { SlideToggle } from "@skeletonlabs/skeleton";
     import { afterUpdate } from "svelte";
 
     export let text: string = "";
@@ -20,12 +18,3 @@
         <pre class="pre">{text}</pre>
     {/if}
 </div>
-
-<!-- <div class="flex p-4 justify-around justify-items-center">
-        <SlideToggle
-            bind:checked={auto_scroll}
-            name="auto_scroll"
-            active="bg-green-500"
-            disabled={true}
-        />
-    </div> -->

@@ -14,4 +14,6 @@
 
 <Connection {message_cb} path_name={"video"} />
 
-<img class="w-1/2" src={jpeg_data} alt="image" aria-hidden="true" />
+{#if jpeg_data}
+    <img class="w-1/2" src={jpeg_data} alt="image" aria-hidden="true" />
+{/if}

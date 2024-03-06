@@ -6,7 +6,7 @@
     export let message_cb: (event: MessageEvent) => Promise<void>;
 
     export let path_name: string = "/";
-    export let port: string = "12102";
+    export let port: string = "62202";
 
     let ws: ReconnectingWebSocket;
 

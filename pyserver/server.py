@@ -91,7 +91,7 @@ async def handle(sock: WebSocketServerProtocol, path):
 
 
 async def main():
-    async with serve(handle, "127.0.0.1", 12102):
+    async with serve(handle, "127.0.0.1", 62202):
         await asyncio.Future()  # run forever
 
 
